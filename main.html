@@ -1,0 +1,20 @@
+<!--Copy this part to wordpress-->
+<div class="main-body">
+    <div class="input-references">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </div>
+    <div id='map' style='width: 700px; height: 500px;'></div>
+    <button type="button" id="button">test</button>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibWljaGFlbC1sZTYxMSIsImEiOiJjamRmZTNmajMwNnd5MzJtZnN2YzVoMHppIn0.18MD1NJSx8CW2IvOb9VKIw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v10'
+        });
+    </script>
+    <script src="https://drive.google.com/uc?export=download&id=1M6WnqNRUEtvIxis71Bv3slphpbgnysMF">
+    </script>
+</div>
+<!--End copying here-->
