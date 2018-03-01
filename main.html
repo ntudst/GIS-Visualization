@@ -6,7 +6,12 @@
     	<!-- With web-gl -->
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+        <!-- layer-model.js -->
+        <script src="https://drive.google.com/uc?export=download&id=1XK4pGkPe53vMdH99p-E0M2p31YuN83cJ"></script>
+        <!-- mapbox-controller.js -->
         <script src="https://drive.google.com/uc?export=download&id=1M6WnqNRUEtvIxis71Bv3slphpbgnysMF"></script>
+        <!-- main.js -->
+        <script src="https://drive.google.com/uc?export=download&id=14g1bOBc2EgH1saZW6pnN5TJ6KdaTnE6s"></script>
         <!-- With out web-gl -->
         <!-- <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
 		<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
@@ -14,7 +19,24 @@
     </div>
     <div class="map-container">
         <p class="notice">*Attention: Map may not work on certain version of Chrome. Use Firefox or Safari for better experience!</p>
-        <div id='map'></div>
+        <div id='map'>
+            <nav id="menu"></nav>
+        </div>
+        <div class='map-overlay top'>
+            <div class='map-overlay-inner'>
+                <fieldset>
+                    <label>Select layer</label>
+                    <select id='layer' name='layer'>
+                        <option value='water'>Water</option>
+                        <option value='building'>Buildings</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label>Choose a color</label>
+                    <div id='swatches'></div>
+                </fieldset>
+            </div>
+        </div>
     </div>
 </div>
 <!--End copying here-->
