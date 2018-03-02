@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Xunlu pi", "Typology": "Scenic area", "Sub_type": "Mountains", "View": "QL7", "Zhang_Yush": null, "Location_d": "Between Fangyuan ju and Songhe qingyue", "Group_typo": "Scenic area" }, "geometry": { "type": "Point", "coordinates": [ 117.93402814269983, 40.985007441226664 ] } },
+{ "type": "Feature", "properties": { "Name": "Shima dai", "Typology": "Scenic area", "Sub_type": "Plain", "View": "QL21", "Zhang_Yush": null, "Location_d": "Western portion of Wanshu yuan", "Group_typo": "Scenic area" }, "geometry": { "type": "Point", "coordinates": [ 117.935063074746452, 40.990853065830095 ] } },
+{ "type": "Feature", "properties": { "Name": "Wanshu yuan", "Typology": "Scenic area", "Sub_type": "Plain", "View": "QL20", "Zhang_Yush": null, "Location_d": "Wanshu yuan", "Group_typo": "Scenic area" }, "geometry": { "type": "Point", "coordinates": [ 117.937342279385334, 40.993648953663119 ] } },
+{ "type": "Feature", "properties": { "Name": "Zhijing yundi", "Typology": "Scenic area", "Sub_type": "Lakes", "View": "KX2", "Zhang_Yush": "Y`", "Location_d": "Central Lakes", "Group_typo": "Scenic area" }, "geometry": { "type": "Point", "coordinates": [ 117.937078766106637, 40.98569127604312 ] } }
+]
+}
