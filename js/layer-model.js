@@ -1,5 +1,12 @@
 var LayerModel = {
 	layerData: {
+		contours: {
+			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/alos-ctr10-smooth.geojson",
+			data: null,
+			color: "#a1dab4",
+			linewidth: 2,
+			type: "line"
+		},
 		lakes: {
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/lakes.geojson",
 			data: null,

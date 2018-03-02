@@ -6,8 +6,8 @@ var MapboxController = {
 			style: 'mapbox://styles/mapbox/light-v9',
 			// style: 'mapbox://styles/mapbox/streets-v9',
 			// style: 'mapbox://styles/mapbox/basic-v9',
-	        center: [117.941106256349713, 41.004993254222228],
-	        zoom: 12
+	        center: [117.93633,40.99902],
+	        zoom: 13.2
 	        // zoom: 5
 	    });
     	
