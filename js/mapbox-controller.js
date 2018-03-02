@@ -3,7 +3,9 @@ var MapboxController = {
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWljaGFlbC1sZTYxMSIsImEiOiJjamRmZTNmajMwNnd5MzJtZnN2YzVoMHppIn0.18MD1NJSx8CW2IvOb9VKIw';
 		var map = new mapboxgl.Map({
 			container: 'map',
-			style: 'mapbox://styles/mapbox/streets-v9',
+			style: 'mapbox://styles/mapbox/light-v9',
+			// style: 'mapbox://styles/mapbox/streets-v9',
+			// style: 'mapbox://styles/mapbox/basic-v9',
 	        center: [117.941106256349713, 41.004993254222228],
 	        zoom: 12
 	        // zoom: 5

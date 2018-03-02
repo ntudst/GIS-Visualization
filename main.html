@@ -1,6 +1,6 @@
 <!--Copy this part to wordpress-->
 <div class="main-body">
-    <div class="input-references">
+    <div class="input-references" style="display: none">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     	<!-- With web-gl -->
@@ -18,24 +18,9 @@
         <script src="https://drive.google.com/uc?export=download&id=1QEZqCxQW95XLMOjb5ceZy_bq6yW7aCG2"></script> -->
     </div>
     <div class="map-container">
-        <p class="notice">*Attention: Map may not work on certain version of Chrome. Use Firefox or Safari for better experience!</p>
+        <div class="notice" style="display: none;">*Attention: Map requires WebGL Support from the browser! You may try changing to different browser if this message appears!</div>
         <div id='map'>
             <nav id="menu"></nav>
-        </div>
-        <div class='map-overlay top'>
-            <div class='map-overlay-inner'>
-                <fieldset>
-                    <label>Select layer</label>
-                    <select id='layer' name='layer'>
-                        <option value='water'>Water</option>
-                        <option value='building'>Buildings</option>
-                    </select>
-                </fieldset>
-                <fieldset>
-                    <label>Choose a color</label>
-                    <div id='swatches'></div>
-                </fieldset>
-            </div>
         </div>
     </div>
 </div>
