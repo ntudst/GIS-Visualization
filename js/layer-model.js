@@ -82,6 +82,7 @@ var LayerModel = {
 						async: false,
 						dataType: "json",
 						success: function(result){
+							result = LayerModel.formatYear(result);
 							var layerTemplate = {
 								'id': layerName,
 								'type': layerData[layerName]["type"],
@@ -90,7 +91,9 @@ var LayerModel = {
 									'data': result, 
 								}
 							};
+							// Creating styles for the layers
 							if(layerData[layerName]["type"] == "fill"){
+								layerTemplate['layout'] 
 								layerTemplate['paint'] = {
 									'fill-color': layerData[layerName]["color"],
 									'fill-opacity': layerData[layerName]["opacity"]
@@ -125,7 +128,26 @@ var LayerModel = {
 		}
 		this.layerData = layerData;
 		return layerData;
-	}
+	},
+	formatYear: function(geoJsonData){
+		// yearRegex1 tests for year in format '1990-2000'
+		var yearRegex1 = new RegExp("[0-9]*[0-9]-[0-9]*[0-9]");
+		// yearRegex2 tests for year in format 'before 1990';
+		var yearRegex2 = new RegExp("[b|B]efore [0-9]*[0-9]");
+		for(var i=0; i < geoJsonData.features.length; i++){
+			if(geoJsonData.features[i].properties.YR_CNSTR_C != undefined){
+				if(yearRegex1.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
+					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
+					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[0-9]*[0-9]-"),"");
+				}
+				if(yearRegex2.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
+					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
+					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[b|B]efore "),"");
+				}
+			}
+		}
+		return geoJsonData;
+	},
 };
 
 
