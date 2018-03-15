@@ -1,4 +1,5 @@
 var LayerModel = {
+	minYear: "1703",
 	layerData: {
 		contours: {
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/alos-ctr10-smooth.geojson",
@@ -144,6 +145,9 @@ var LayerModel = {
 					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
 					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[b|B]efore "),"");
 				}
+			}
+			else{
+				geoJsonData.features[i].properties.YR_CNSTR_C = LayerModel.minYear;
 			}
 		}
 		return geoJsonData;

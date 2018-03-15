@@ -36,7 +36,7 @@ var MapboxController = {
 	    			var constructionYear = layerObject["data"]["source"]["data"].features[0].properties.YR_CNSTR_C;
 	    			if(constructionYear != undefined){
 	    				console.log(layerName + " : " + constructionYear);
-	    				MapboxController.filterBy(map,layerName,filterProperty,"1600");
+	    				MapboxController.filterBy(map,layerName,filterProperty,"1000");
 	    			}
 	    		}
 	    	});
