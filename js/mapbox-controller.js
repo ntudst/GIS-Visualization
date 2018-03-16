@@ -2,6 +2,7 @@ var MapboxController = {
 	filterBy : function(map,layerID,filterProperty,input){
 		var filters = ["<=",filterProperty,input];
 		map.setFilter(layerID,filters);
+		$("#year").text(input);
 		return map;
 	},
 	loadMap: function(data){
@@ -18,28 +19,32 @@ var MapboxController = {
     	
 	    map.on('load', function(){
     		var layerList = [];
+    		var yearList = [];
     		var filterProperty = 'YR_CNSTR_C';
 	    	$.each(data, function(layerName,layerObject){
 	    		if(layerObject["data"] != null){
     				layerList.push(layerName);
 	    			map.addLayer(layerObject["data"]);
-	    			// if(layerName == "perimeterwalls"){
-	    			// 	console.log(layerObject["data"]["source"]["data"].features[0].properties.YR_CNSTR_C);
-	    			// 	// var constructionYear = layerObject["data"]["source"]["data"].features[8].properties.YR_CNSTR_C;
-		    		// 	// // if(constructionYear == undefined){
-		    		// 	// // 	constructionYear = null;
-		    		// 	// // }
-		    		// 	// console.log(constructionYear);
-		    		// 	// console.log(constructionYear < "1800");
-		    		// 	// MapboxController.filterBy(map,layerName,filterProperty,"1800");
-	    			// }
 	    			var constructionYear = layerObject["data"]["source"]["data"].features[0].properties.YR_CNSTR_C;
 	    			if(constructionYear != undefined){
 	    				console.log(layerName + " : " + constructionYear);
-	    				MapboxController.filterBy(map,layerName,filterProperty,"2000");
+	    				if(yearList.indexOf(constructionYear) == -1){
+	    					yearList.push(constructionYear);
+	    				}
 	    			}
 	    		}
 	    	});
+	    	// sort year list and update the max length of the slider
+	    	yearList = yearList.sort();
+	    	$("#timeSlider").attr("max",yearList.length-1);
+	    	$("#timeSlider").on("change",function(e){
+	    		var yearIndex = parseInt(e.target.value, 10);
+	    		$.each(data, function(layerName,layerObject){
+	    			MapboxController.filterBy(map,layerName,filterProperty,yearList[yearIndex]);
+	    		});
+	    	});
+
+	    	// Set click to view by layer
     		for(var i = layerList.length-1; i >= 0; i--){
 	    		var id = layerList[i];
 	    		var link = document.createElement('a');

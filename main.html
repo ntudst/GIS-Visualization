@@ -3,9 +3,19 @@
     <div class="input-references" style="display: none">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    	<!-- With web-gl -->
+        <!-- With web-gl -->
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
         <!-- layer-model.js -->
         <script src="https://drive.google.com/uc?export=download&id=1XK4pGkPe53vMdH99p-E0M2p31YuN83cJ"></script>
         <!-- mapbox-controller.js -->
@@ -14,13 +24,24 @@
         <script src="https://drive.google.com/uc?export=download&id=14g1bOBc2EgH1saZW6pnN5TJ6KdaTnE6s"></script>
         <!-- With out web-gl -->
         <!-- <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
-		<link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+        <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
         <script src="https://drive.google.com/uc?export=download&id=1QEZqCxQW95XLMOjb5ceZy_bq6yW7aCG2"></script> -->
     </div>
     <div class="map-container">
         <div class="notice" style="display: none;">*Attention: Map requires WebGL Support from the browser! You may try changing to different browser if this message appears!</div>
         <div id='map'>
             <nav id="menu"></nav>
+            <div id='map-overlay' class="map-overlay bottom">
+                <div class="map-overlay-inner">
+                    <div class="time-line-header">
+                        <h3>Timeline</h3>
+                    </div>
+                    <div class="time-line-label">
+                        <label id='year'>1800</label>
+                    </div>
+                    <input name="time-slider" type="range" min="0" max="11" step="1" value='11' class="slider">
+                </div>
+            </div>
         </div>
     </div>
 </div>
