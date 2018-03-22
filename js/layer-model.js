@@ -136,6 +136,7 @@ var LayerModel = {
 		// yearRegex2 tests for year in format 'before 1990';
 		var yearRegex2 = new RegExp("[b|B]efore [0-9]*[0-9]");
 		for(var i=0; i < geoJsonData.features.length; i++){
+			// console.log(geoJsonData.features[i]);
 			if(geoJsonData.features[i].properties.YR_CNSTR_C != undefined){
 				if(yearRegex1.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
 					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
