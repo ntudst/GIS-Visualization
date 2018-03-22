@@ -83,7 +83,7 @@ var LayerModel = {
 						async: false,
 						dataType: "json",
 						success: function(result){
-							result = LayerModel.formatYear(result);
+							result = LayerModel.formatYear(result,layerName);
 							var layerTemplate = {
 								'id': layerName,
 								'type': layerData[layerName]["type"],
@@ -130,14 +130,17 @@ var LayerModel = {
 		this.layerData = layerData;
 		return layerData;
 	},
-	formatYear: function(geoJsonData){
+	formatYear: function(geoJsonData,layerName){
 		// yearRegex1 tests for year in format '1990-2000'
 		var yearRegex1 = new RegExp("[0-9]*[0-9]-[0-9]*[0-9]");
 		// yearRegex2 tests for year in format 'before 1990';
 		var yearRegex2 = new RegExp("[b|B]efore [0-9]*[0-9]");
+		// yearRegex3 test for year in format '1751?'
+		var yearRegex3 = new RegExp("[0-9]*[0-9][?]");
+		// yearRegex4 test for year in format '1775, 1760'
+		var yearRegex4 = new RegExp("[0-9]*[0-9], [0-9]*[0-9]");
 		for(var i=0; i < geoJsonData.features.length; i++){
-			// console.log(geoJsonData.features[i]);
-			if(geoJsonData.features[i].properties.YR_CNSTR_C != undefined){
+			if(geoJsonData.features[i].properties.YR_CNSTR_C != undefined && geoJsonData.features[i].properties.YR_CNSTR_C != "NA"){
 				if(yearRegex1.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
 					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
 					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[0-9]*[0-9]-"),"");
@@ -146,9 +149,22 @@ var LayerModel = {
 					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
 					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[b|B]efore "),"");
 				}
+				if(yearRegex3.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
+					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
+					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[?]"),"");
+				}
+				if(yearRegex4.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
+					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
+					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp(", [0-9]*[0-9]"),"");
+				}
 			}
 			else{
-				geoJsonData.features[i].properties.YR_CNSTR_C = LayerModel.minYear;
+				if(layerName == "contours" || layerName == "lakes" || layerName == "islands" || layerName == "streams"){
+					geoJsonData.features[i].properties.YR_CNSTR_C = String(LayerModel.minYear - 1);
+				}
+				else{
+					geoJsonData.features[i].properties.YR_CNSTR_C = LayerModel.minYear;
+				}
 			}
 		}
 		return geoJsonData;
