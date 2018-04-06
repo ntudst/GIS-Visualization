@@ -4,6 +4,8 @@ $(document).ready(function(){
 		$('.notice').css('display','block');
 		$('#menu').css('display','none');
 	}
+	var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+	$(".map-container").css('height',viewportHeight);
 	var mapData = LayerModel.loadData();
 	MapboxController.loadMap(mapData);
 });

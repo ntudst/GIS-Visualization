@@ -53,21 +53,24 @@
 }
 </style>
 
-<div id='map'></div>
+<div class="mapcontainer">
+    <div id='map'></div>
 
-<div class='map-overlay top'>
-    <div class='map-overlay-inner'>
-        <h2>Significant earthquakes in 2015</h2>
-        <label id='month'></label>
-        <input id='slider' type='range' min='0' max='11' step='1' value='0' />
-    </div>
-    <div class='map-overlay-inner'>
-        <div id='legend' class='legend'>
-            <div class='bar'></div>
-            <div>Magnitude (m)</div>
+    <div class='map-overlay top'>
+        <div class='map-overlay-inner'>
+            <h2>Significant earthquakes in 2015</h2>
+            <label id='month'></label>
+            <input id='slider' type='range' min='0' max='11' step='1' value='0' />
+        </div>
+        <div class='map-overlay-inner'>
+            <div id='legend' class='legend'>
+                <div class='bar'></div>
+                <div>Magnitude (m)</div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <script src='https://d3js.org/d3.v3.min.js' charset='utf-8'></script>
 <script>

@@ -1,24 +1,17 @@
-body { margin:0; padding:0; }
-
-.entry-wrapper {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .map-container{
   width: 100%;
+  height: 500px;
   margin: 0 auto;
-  margin-top:0px;
+  margin-top:10px;
 }
 .input-references{
   height: 0;
 }
 #map{
-    height: 0;
+    height: 100%;
     overflow: hidden;
-    padding-bottom: 65%;
-    padding-top: 0px;
+    /*padding-bottom: 65%;
+    padding-top: 0px;*/
     position: relative;
 }
 
@@ -137,4 +130,6 @@ body { margin:0; padding:0; }
         background: #3074a4;
     }
     
+
+
 

@@ -1,3 +1,9 @@
 Note:
 - alos-ctr10-smooth ,scenic-area, streams, lakes, island : does not have year data
 - building, water-feature, wall, perimeter-wall, rockeries : YR_CNSTR_C some may be writen as before 1700
+
+- change height of the map in css
+- set default zoom for the map to the island like the picture took
+- timeline interval
+- fix responsive
+- placeholder for the layer selector

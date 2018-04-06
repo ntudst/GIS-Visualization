@@ -2,6 +2,7 @@ var LayerModel = {
 	minYear: "1703",
 	layerData: {
 		contours: {
+			label: "Contours",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/alos-ctr10-smooth.geojson",
 			data: null,
 			color: "#a1dab4",
@@ -9,48 +10,55 @@ var LayerModel = {
 			type: "line"
 		},
 		lakes: {
+			label: "Lakes",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/lakes.geojson",
 			data: null,
-			color: "#253494",
+			color: "#92C5D8",
 			opacity: 0.6,
 			type: "fill"		
 		},
 		islands: {
+			label: "Islands",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/Islands.geojson",
 			data: null,
-			color: "#8B008B",
+			color: "#FFFFFF",
 			opacity: 0.6,
 			type: "fill"		
 		},
 		perimeterwalls: {
+			label: "Perimeter Walls",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/perimeter-wall.geojson",
 			data: null,
 			color: "#fed976",
 			linewidth: 3,
 			type: "line"		
-		},	
-		walls: {
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/walls.geojson",
-			data: null,
-			color: "#f03b20",
-			linewidth: 3,
-			type: "line"		
 		},
 		streams: {
+			label: "Streams",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/streams.geojson",
 			data: null,
 			color: "#41b6c4",
 			linewidth: 3,
 			type: "line"		
+		},	
+		walls: {
+			label: "Walls",
+			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/walls.geojson",
+			data: null,
+			color: "#7A7A7A",
+			linewidth: 2,
+			type: "line"		
 		},
 		buildings: {
+			label: "Buildings",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/building.geojson",
 			data: null,
-			color: "#FFFF00",
-			opacity: 0.6,
+			color: "#F26666",
+			opacity: 1.0,
 			type: "fill"		
 		},
 		waterfeature: {
+			label: "Water Features",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/water-features.geojson",
 			data: null,
 			opacity: 0.6,
@@ -58,6 +66,7 @@ var LayerModel = {
 			icon: "park-15"		
 		},
 		scenicarea: {
+			label: "Scenic Areas",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/scenic-area.geojson",
 			data: null,
 			opacity: 0.6,
@@ -65,6 +74,7 @@ var LayerModel = {
 			icon: "monument-15"		
 		},
 		rockeries: {
+			label: "Rockeries",
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/rockeries.geojson",
 			data: null,
 			opacity: 0.6,
@@ -92,15 +102,19 @@ var LayerModel = {
 									'data': result, 
 								}
 							};
+							if(layerName == 'buildings' || layerName == 'walls'){
+								console.log(result);
+							}
 							// Creating styles for the layers
-							if(layerData[layerName]["type"] == "fill"){
+							var typeOfLayerData = layerData[layerName]["type"]
+							if(typeOfLayerData == "fill"){
 								layerTemplate['layout'] 
 								layerTemplate['paint'] = {
 									'fill-color': layerData[layerName]["color"],
 									'fill-opacity': layerData[layerName]["opacity"]
 								};
 							}
-							else if(layerData[layerName]["type"] == "line"){
+							else if(typeOfLayerData == "line"){
 								layerTemplate['layout'] = {
 									'line-join': 'round',
 									'line-cap': 'round'

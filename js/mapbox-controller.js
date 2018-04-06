@@ -13,9 +13,9 @@ var MapboxController = {
 		mapboxgl.accessToken = 'pk.eyJ1IjoibWljaGFlbC1sZTYxMSIsImEiOiJjamRmZTNmajMwNnd5MzJtZnN2YzVoMHppIn0.18MD1NJSx8CW2IvOb9VKIw';
 		var map = new mapboxgl.Map({
 			container: 'map',
-			style: 'mapbox://styles/mapbox/light-v9',
+			// style: 'mapbox://styles/mapbox/light-v9',
 			// style: 'mapbox://styles/mapbox/streets-v9',
-			// style: 'mapbox://styles/mapbox/basic-v9',
+			style: 'mapbox://styles/mapbox/basic-v9',
 	        center: [117.93633,40.99902],
 	        zoom: 13.2
 	        // zoom: 5
@@ -69,14 +69,20 @@ var MapboxController = {
     // 		});
 	    	
 	    	// Set click to view by layer
+    		var layerToBeHide = LayerModel.layerData.contours.label;
     		for(var i = layerList.length-1; i >= 0; i--){
-	    		var id = layerList[i];
+	    		var  layerName = layerList[i];
 	    		var link = document.createElement('a');
+	    		link.name = layerName;
 	    		link.href = '#';
-	    		link.className = 'active';
-	    		link.textContent = id;
+	    		link.textContent = LayerModel.layerData[layerName].label;
+    			link.className = 'active';
+	    		if(link.textContent == layerToBeHide){
+	    			map.setLayoutProperty(layerName, 'visibility', 'none');
+	    			link.className = '';
+	    		}
 	    		link.onclick = function(e){
-	    			var selectedLayer = this.textContent;
+	    			var selectedLayer = this.name;
 	    			e.preventDefault();
 	    			e.stopPropagation();
 
@@ -92,6 +98,14 @@ var MapboxController = {
 	    		}
 	    		$('#menu').append(link);
 	    	};
+
+	    	// resize map on viewport height changes
+	    	$(window).on('resize', function(){
+				var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+				$(".map-container").css('height',viewportHeight);
+	    		map.resize();
+	    		console.log("resize");
+			});
 	    });
 	},
 };
