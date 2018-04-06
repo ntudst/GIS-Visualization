@@ -1,5 +1,16 @@
 var LayerModel = {
 	minYear: "1703",
+	reignData: {
+		Kangxi: {
+			color: "#660066"
+		},
+		Qianlong: {
+			color: "#e59400"
+		},
+		Uncertain: {
+			color: "#7A7A7A"
+		}
+	},
 	layerData: {
 		contours: {
 			label: "Contours",
@@ -46,7 +57,7 @@ var LayerModel = {
 			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/walls.geojson",
 			data: null,
 			color: "#7A7A7A",
-			linewidth: 2,
+			linewidth: 1.5,
 			type: "line"		
 		},
 		buildings: {
@@ -84,6 +95,7 @@ var LayerModel = {
 	},
 	loadData: function(){
 		var layerData = this.layerData;
+		var reignData = this.reignData;
 		for(var layerName in layerData){
 			if(layerData[layerName] != null){
 				if(layerData[layerName]["url"] != null && layerData[layerName]["data"] == null){
@@ -103,7 +115,12 @@ var LayerModel = {
 								}
 							};
 							if(layerName == 'buildings' || layerName == 'walls'){
-								console.log(result);
+								$.each(result.features, function(index,item){
+									var reign = item.properties["Constr_Reign"];
+									console.log(reign)
+									// console.log(reignData[reign]["color"]);
+									layerData[layerName]["color"] = reignData[reign]["color"];
+								});
 							}
 							// Creating styles for the layers
 							var typeOfLayerData = layerData[layerName]["type"]
