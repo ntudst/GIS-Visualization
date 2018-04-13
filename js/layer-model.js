@@ -1,167 +1,76 @@
 var LayerModel = {
 	minYear: "1703",
-	reignData: {
-		Kangxi: {
-			color: "#660066"
-		},
-		Qianlong: {
-			color: "#e59400"
-		},
-		Uncertain: {
-			color: "#7A7A7A"
-		}
-	},
+	layerData: {},
+
 	layerData: {
 		contours: {
-			label: "Contours",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/alos-ctr10-smooth.geojson",
 			data: null,
-			color: "#a1dab4",
-			linewidth: 2,
-			type: "line"
+			label: null,
 		},
 		lakes: {
-			label: "Lakes",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/lakes.geojson",
 			data: null,
-			color: "#92C5D8",
-			opacity: 0.6,
-			type: "fill"		
+			label: null,
 		},
 		islands: {
-			label: "Islands",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/Islands.geojson",
 			data: null,
-			color: "#FFFFFF",
-			opacity: 0.6,
-			type: "fill"		
+			label: null,
 		},
 		perimeterwalls: {
-			label: "Perimeter Walls",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/perimeter-wall.geojson",
 			data: null,
-			color: "#fed976",
-			linewidth: 3,
-			type: "line"		
+			label: null,
 		},
 		streams: {
-			label: "Streams",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/streams.geojson",
 			data: null,
-			color: "#41b6c4",
-			linewidth: 3,
-			type: "line"		
+			label: null,
 		},	
 		walls: {
-			label: "Walls",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/walls.geojson",
 			data: null,
-			color: "#7A7A7A",
-			linewidth: 1.5,
-			type: "line"		
+			label: null,
 		},
 		buildings: {
-			label: "Buildings",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/building.geojson",
 			data: null,
-			color: "#F26666",
-			opacity: 1.0,
-			type: "fill"		
+			label: null,
 		},
-		waterfeature: {
-			label: "Water Features",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/water-features.geojson",
+		waterfeatures: {
 			data: null,
-			opacity: 0.6,
-			type: "symbol",
-			icon: "park-15"		
+			label: null,
 		},
-		scenicarea: {
-			label: "Scenic Areas",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/scenic-area.geojson",
+		scenicareas: {
 			data: null,
-			opacity: 0.6,
-			type: "symbol",
-			icon: "monument-15"		
+			label: null,
 		},
 		rockeries: {
-			label: "Rockeries",
-			url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/rockeries.geojson",
 			data: null,
-			opacity: 0.6,
-			type: "symbol",
-			icon: "mountain-15"		
+			label: null,
 		},
 	},
+
 	loadData: function(){
-		var layerData = this.layerData;
-		var reignData = this.reignData;
-		for(var layerName in layerData){
-			if(layerData[layerName] != null){
-				if(layerData[layerName]["url"] != null && layerData[layerName]["data"] == null){
-					$.ajax({
-						type: "GET",
-						url: layerData[layerName]["url"],
-						async: false,
-						dataType: "json",
-						success: function(result){
-							result = LayerModel.formatYear(result,layerName);
-							var layerTemplate = {
-								'id': layerName,
-								'type': layerData[layerName]["type"],
-								'source': {
-									'type': 'geojson',
-									'data': result, 
-								}
-							};
-							if(layerName == 'buildings' || layerName == 'walls'){
-								$.each(result.features, function(index,item){
-									var reign = item.properties["Constr_Reign"];
-									console.log(reign)
-									// console.log(reignData[reign]["color"]);
-									layerData[layerName]["color"] = reignData[reign]["color"];
-								});
-							}
-							// Creating styles for the layers
-							var typeOfLayerData = layerData[layerName]["type"]
-							if(typeOfLayerData == "fill"){
-								layerTemplate['layout'] 
-								layerTemplate['paint'] = {
-									'fill-color': layerData[layerName]["color"],
-									'fill-opacity': layerData[layerName]["opacity"]
-								};
-							}
-							else if(typeOfLayerData == "line"){
-								layerTemplate['layout'] = {
-									'line-join': 'round',
-									'line-cap': 'round'
-								};
-								layerTemplate['paint'] = {
-									'line-color': layerData[layerName]["color"],
-									'line-width': layerData[layerName]["linewidth"]
-								};
-							}
-							else{
-								layerTemplate['layout'] = {
-									"icon-image": layerData[layerName]["icon"],
-									"icon-size": 1,
-						            "text-field": "{Name}",
-						            "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
-						            "text-offset": [0, 0.6],
-						            "text-anchor": "top",
-						            "text-size": 12,
-								};
-							}
-							layerData[layerName]["data"] = layerTemplate;
-						}
-					});
-				}
-			}
-		}
-		this.layerData = layerData;
-		return layerData;
+		this.layerData[ContourModel.id]["data"] = ContourModel.loadData();
+		this.layerData[ContourModel.id]["label"] = ContourModel.label;
+		this.layerData[LakeModel.id]["data"] = LakeModel.loadData();
+		this.layerData[LakeModel.id]["label"] = LakeModel.label;
+		this.layerData[IslandModel.id]["data"] = IslandModel.loadData();
+		this.layerData[IslandModel.id]["label"] = IslandModel.label;
+		this.layerData[PerimeterwallModel.id]["data"] = PerimeterwallModel.loadData();
+		this.layerData[PerimeterwallModel.id]["label"] = PerimeterwallModel.label;
+		this.layerData[StreamModel.id]["data"] = StreamModel.loadData();
+		this.layerData[StreamModel.id]["label"] = StreamModel.label;
+		this.layerData[WallModel.id]["data"] = WallModel.loadData();
+		this.layerData[WallModel.id]["label"] = WallModel.label;
+		this.layerData[BuildingModel.id]["data"] = BuildingModel.loadData();
+		this.layerData[BuildingModel.id]["label"] = BuildingModel.label;
+		this.layerData[WaterfeatureModel.id]["data"] = WaterfeatureModel.loadData();
+		this.layerData[WaterfeatureModel.id]["label"] = WaterfeatureModel.label;
+		this.layerData[ScenicareaModel.id]["data"] = ScenicareaModel.loadData();
+		this.layerData[ScenicareaModel.id]["label"] = ScenicareaModel.label;
+		this.layerData[RockerieModel.id]["data"] = RockerieModel.loadData();
+		this.layerData[RockerieModel.id]["label"] = RockerieModel.label;
+		return this.layerData;
 	},
+
 	formatYear: function(geoJsonData,layerName){
+		var minYear = this.minYear;
 		// yearRegex1 tests for year in format '1990-2000'
 		var yearRegex1 = new RegExp("[0-9]*[0-9]-[0-9]*[0-9]");
 		// yearRegex2 tests for year in format 'before 1990';
@@ -191,10 +100,10 @@ var LayerModel = {
 			}
 			else{
 				if(layerName == "contours" || layerName == "lakes" || layerName == "islands" || layerName == "streams"){
-					geoJsonData.features[i].properties.YR_CNSTR_C = String(LayerModel.minYear - 1);
+					geoJsonData.features[i].properties.YR_CNSTR_C = String(minYear - 1);
 				}
 				else{
-					geoJsonData.features[i].properties.YR_CNSTR_C = LayerModel.minYear;
+					geoJsonData.features[i].properties.YR_CNSTR_C = minYear;
 				}
 			}
 		}

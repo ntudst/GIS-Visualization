@@ -1,0 +1,43 @@
+var StreamModel = {
+	id: "streams",
+	label: "Streams",
+	url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/streams.geojson",
+	data: [],
+	color: "#41b6c4",
+	linewidth: 3,
+	type: "line",
+
+	loadData: function(){
+		var layerData = this.data;
+		$.ajax({
+			type: "GET",
+			url: StreamModel.url,
+			async: false,
+			dataType: "json",
+			success: function(result){
+				result = LayerModel.formatYear(result,StreamModel.id);
+				var layerTemplate = {
+					'id': StreamModel.id,
+					'type': StreamModel.type,
+					'source': {
+						'type': 'geojson',
+						'data': result, 
+					}
+				};
+				
+				// Creating styles for the layers
+				layerTemplate['layout'] = {
+					'line-join': 'round',
+					'line-cap': 'round'
+				};
+				layerTemplate['paint'] = {
+					'line-color': StreamModel.color,
+					'line-width': StreamModel.linewidth
+				};
+				layerData.push(layerTemplate);
+			}
+		});
+		this.data = layerData;
+		return layerData;
+	},
+}

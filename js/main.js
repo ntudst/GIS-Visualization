@@ -7,6 +7,7 @@ $(document).ready(function(){
 	var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
 	$(".map-container").css('height',viewportHeight);
 	var mapData = LayerModel.loadData();
+	// console.log(mapData);
 	MapboxController.loadMap(mapData);
 });
 var webgl_support = function () { 
