@@ -1,3 +1,4 @@
+var mapData = LayerModel.loadData();
 $(document).ready(function(){
 	// Project require webgl support
 	if(webgl_support() == null){
@@ -6,7 +7,6 @@ $(document).ready(function(){
 	}
 	var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
 	$(".map-container").css('height',viewportHeight);
-	var mapData = LayerModel.loadData();
 	// console.log(mapData);
 	MapboxController.loadMap(mapData);
 });

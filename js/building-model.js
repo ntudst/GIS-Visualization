@@ -15,7 +15,7 @@ var BuildingModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,BuildingModel.id);
+				// result = LayerModel.formatYear(result,BuildingModel.id);
 				var layerTemplate = {
 					'id': null,
 					'type': BuildingModel.type,

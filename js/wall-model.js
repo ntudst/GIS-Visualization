@@ -15,7 +15,7 @@ var WallModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,WallModel.id);
+				// result = LayerModel.formatYear(result,WallModel.id);
 				var layerTemplate = {
 					'id': WallModel.id,
 					'type': WallModel.type,
