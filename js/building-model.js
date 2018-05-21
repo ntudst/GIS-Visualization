@@ -15,7 +15,10 @@ var BuildingModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				// result = LayerModel.formatYear(result,BuildingModel.id);
+				// result = ModelManager.formatYear(result,BuildingModel.id);
+				// Because Mapbox filter function only takes in String or number to compare, 
+				// we cannot have null data for the features.
+				result = ModelManager.formatNullData(result)
 				var layerTemplate = {
 					'id': null,
 					'type': BuildingModel.type,

@@ -15,7 +15,7 @@ var PerimeterwallModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,PerimeterwallModel.id);
+				result = ModelManager.formatYear(result,PerimeterwallModel.id);
 				var layerTemplate = {
 					'id': PerimeterwallModel.id,
 					'type': PerimeterwallModel.type,

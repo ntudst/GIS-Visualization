@@ -15,7 +15,7 @@ var RockerieModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,RockerieModel.id);
+				result = ModelManager.formatYear(result,RockerieModel.id);
 				var layerTemplate = {
 					'id': RockerieModel.id,
 					'type': RockerieModel.type,

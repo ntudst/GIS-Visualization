@@ -1,4 +1,4 @@
-var LayerModel = {
+var ModelManager = {
 	minYear: "1703",
 	layerData: {},
 
@@ -106,6 +106,20 @@ var LayerModel = {
 					geoJsonData.features[i].properties.YR_CNSTR_C = minYear;
 				}
 			}
+		}
+		return geoJsonData;
+	},
+
+	formatNullData: function(geoJsonData){
+		// Because Mapbox filter function only takes in String or number to compare, 
+		// we cannot have null data for the features.
+		for(var i=0; i < geoJsonData.features.length; i++){
+			var properties = geoJsonData.features[i].properties;
+			$.each(properties, function(key,value){
+				if(value == null){
+					geoJsonData.features[i].properties[key] = "null";
+				}
+			});
 		}
 		return geoJsonData;
 	},

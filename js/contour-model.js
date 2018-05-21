@@ -15,7 +15,7 @@ var ContourModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,ContourModel.id);
+				result = ModelManager.formatYear(result,ContourModel.id);
 				var layerTemplate = {
 					'id': ContourModel.id,
 					'type': ContourModel.type,

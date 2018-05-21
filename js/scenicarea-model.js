@@ -15,7 +15,7 @@ var ScenicareaModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,ScenicareaModel.id);
+				result = ModelManager.formatYear(result,ScenicareaModel.id);
 				var layerTemplate = {
 					'id': ScenicareaModel.id,
 					'type': ScenicareaModel.type,

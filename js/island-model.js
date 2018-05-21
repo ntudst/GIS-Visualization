@@ -15,7 +15,7 @@ var IslandModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,IslandModel.id);
+				result = ModelManager.formatYear(result,IslandModel.id);
 				var layerTemplate = {
 					'id': IslandModel.id,
 					'type': IslandModel.type,

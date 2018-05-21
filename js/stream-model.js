@@ -15,7 +15,7 @@ var StreamModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,StreamModel.id);
+				result = ModelManager.formatYear(result,StreamModel.id);
 				var layerTemplate = {
 					'id': StreamModel.id,
 					'type': StreamModel.type,

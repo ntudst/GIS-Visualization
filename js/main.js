@@ -1,4 +1,4 @@
-var mapData = LayerModel.loadData();
+var mapData = ModelManager.loadData();
 $(document).ready(function(){
 	// Project require webgl support
 	if(webgl_support() == null){

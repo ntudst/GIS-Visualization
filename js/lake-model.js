@@ -15,7 +15,7 @@ var LakeModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,LakeModel.id);
+				result = ModelManager.formatYear(result,LakeModel.id);
 				var layerTemplate = {
 					'id': LakeModel.id,
 					'type': LakeModel.type,

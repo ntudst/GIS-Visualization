@@ -15,7 +15,7 @@ var WaterfeatureModel = {
 			async: false,
 			dataType: "json",
 			success: function(result){
-				result = LayerModel.formatYear(result,WaterfeatureModel.id);
+				result = ModelManager.formatYear(result,WaterfeatureModel.id);
 				var layerTemplate = {
 					'id': WaterfeatureModel.id,
 					'type': WaterfeatureModel.type,
