@@ -33,6 +33,7 @@ var LayerController = {
 				var filterSelectionList = FilterController.getFilterSelectionList();
 				$.each(filterSelectionList, function(key,filterID){
 					$("#"+filterID).trigger("change");
+					console.log(1);
 				});
 			}
 		}

@@ -21,6 +21,7 @@ var MapboxController = {
     		var layerList = []; //[{layerName: [layer_id]}]
     		var yearList = [];
     		var structureList = [];
+    		var structureDisplayList = [];
     		var structureObjects = {}; 
     		var reignList = [];
     		var filterProperty = 'YR_CNSTR_C';
@@ -49,6 +50,11 @@ var MapboxController = {
 			    				// Build Structure Type List
 			    				var subType = String(dataObject["source"]["data"].features[k].properties.Sub_type);
 			    				if(subType != undefined){
+			    					if(structureList.indexOf(subType) == -1){
+			    						structureList.push(subType);
+			    					}
+			    					// Build objects contain building name and count
+			    					// This structureObjects is then used to build the the displaytext for the structure filter.
 			    					if(structureObjects[subType] == undefined){
 			    						structureObjects[subType] = 1;
 			    					}
@@ -70,9 +76,9 @@ var MapboxController = {
 	    		}
 	    		layerList.push(layer);
 	    	});
-	    	structureList = FilterController.buildStructureListForFilterDisplay(structureObjects);
+	    	structureDisplayList = FilterController.buildStructureListForFilterDisplay(structureObjects);
 	    	// console.log(layerList);
-	    	// console.log(structureList);
+	    	// console.log(structureDisplayList);
 	    	// // sort year list and update the max length of the slider
 	    	// yearList = yearList.sort();
 	    	// // console.log(yearList);
@@ -99,27 +105,35 @@ var MapboxController = {
 	    	// Set click to view by layer and select by filter
     		var layerToBeHide = ModelManager.layerData.contours.label;
 			var filterSelectionList = FilterController.getFilterSelectionList();
+			var layerTobeFilterList = ["buildings","walls"];
     		for(var i = layerList.length-1; i >= 0; i--){
     			var layerDetail = layerList[i]; //layerDetail = {layerName : [layer_id]}
     			var layerName = Object.keys(layerDetail)[0];
 	    		var activeLayers = LayerController.buildLayerSelector(layerDetail, layerToBeHide, map);
-	    		if(layerName == "buildings" || layerName == "walls"){
-	    			FilterController.buildFilterOption(yearList, layerName, filterSelectionList.yearFilter, filterSelectionList, map);
-	    			FilterController.buildFilterOption(structureList, layerName, filterSelectionList.structureFilter, filterSelectionList, map);
-	    			FilterController.buildFilterOption(reignList, layerName, filterSelectionList.reignFilter, filterSelectionList, map);
+	    		if(layerTobeFilterList.indexOf(layerName) != -1){
+	    			FilterController.buildFilterOption(filterSelectionList.yearFilter, yearList, yearList);
+	    			FilterController.buildFilterOption(filterSelectionList.structureFilter, structureList, structureDisplayList);
+	    			FilterController.buildFilterOption(filterSelectionList.reignFilter, reignList, reignList);
 	    		}
 	    		if(layerName == "buildings"){
 	    			ModalBoxController.onBuildingSelected(layerDetail[layerName], map);
 	    		}
 	    	};
+	    	FilterController.onFilterSelected(filterSelectionList, layerTobeFilterList, map);
 	    	FilterController.setClearAllEvent(filterSelectionList);
+	    	LegendController.buildLegendDisplay();
 	    	MapboxController.resizeViewPort(map);
 	    });
 	},
 	resizeViewPort: function(map){
 		// resize map on viewport height changes
     	$(window).on('resize', function(){
-			var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+    		try{
+				var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+    		}
+			catch (e){
+				var viewportHeight = $(window).height();
+			}  
 			$(".map-container").css('height',viewportHeight);
     		map.resize();
 		});
