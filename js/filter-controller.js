@@ -2,6 +2,9 @@ var FilterController = {
 	getFilterSelectionList: function(){
 		var filters = {};
 		$(".selection").each(function(key,value){
+			// refer to the main.html to view the selection tag details
+			// value is the select tag details
+			// name is name of the select tag and id is the id of the select tag
 			filters[value.name] = value.id;
 		});
 		return filters;

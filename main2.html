@@ -21,7 +21,7 @@
         <!-- sumo select css -->
         <!-- <link href="https://drive.google.com/uc?export=download&id=1AeD3rzz_P1svI6eUKKBfXRKGaMK5lcm6" rel='stylesheet' /> -->
         <link href="js/sumoselect.min.css" rel='stylesheet'/>
-        <link href="css/custom.css" rel='stylesheet' />
+        <link href="css/custom2.css" rel='stylesheet' />
 
         <!-- sumo select js -->
         <!-- <script src="https://drive.google.com/uc?export=download&id=1-BbiMbfzQzRihu_Lxw9DNKcRGdwBWDCc"></script> -->
@@ -104,82 +104,84 @@
         
     </div>
     <!-- Start map-container -->
-    <div class="map-container">
-        <div class="notice" style="display: none;">*Attention: Map requires WebGL Support from the browser! You may try changing to different browser if this message appears!</div>
-        <div id='map'>
-            <div id='map-layer' class="map-overlay right top">
-                <div class="map-overlay-inner">
-                    <div class="center-header">
-                        <h3>Layers</h3>
-                    </div>
-                    <div>
-                        <nav id="menu"></nav>
+    <div class="row">
+        <div class="container-fluid">
+            <div class="notice" style="display: none;">*Attention: Map requires WebGL Support from the browser! You may try changing to different browser if this message appears!</div>
+            <div id='map'>
+                <div id='map-layer' class="map-overlay col-md-2 col-md-offset-10">
+                    <div class="map-overlay-inner">
+                        <div class="center-header">
+                            <h3>Layers</h3>
+                        </div>
+                        <div>
+                            <nav id="menu"></nav>
+                        </div>
                     </div>
                 </div>
+                <div id='map-filter' class="map-overlay">
+                    <div class="map-overlay-inner">
+                        <div class="center-header">
+                            <h3>Filter By</h3>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner">
+                                <div class="bold-header">Structure Type</div>
+                                <select id="Sub_type" name="structureFilter" class="selection" multiple="multiple">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner">
+                                <div class="bold-header">Construction Date</div>
+                                <select id='Alt_Constr' name="yearFilter" class="selection" multiple="multiple">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner">
+                                <div class="bold-header">Reign</div>
+                                <select id='Constr_Reign' name="reignFilter" class="selection" multiple="multiple">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner center-content">
+                                <button id="clearButton" class="clear-button button" type="button">Clear All</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='map-legend' class="map-overlay bottom">
+                    <div class="map-overlay-inner">
+                        <div class="center-header">
+                            <h3>Legend</h3>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner center-content">
+                                <div id="legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div id='map-overlay' class="map-overlay bottom" style="display: none;">
+                    <div class="map-overlay-inner">
+                        <div class="time-line-header">
+                            <h3>Timeline</h3>
+                        </div>
+                        <div class="time-line-label">
+                            <label id='year'></label>
+                        </div>
+                        <input id="timeSlider" name="time-slider" type="range" min="0" max="11" step="1" value='11' class="slider">
+                    </div>
+                </div> -->
+                
             </div>
-            <div id='map-filter' class="map-overlay left top">
-                <div class="map-overlay-inner">
-                    <div class="center-header">
-                        <h3>Filter By</h3>
-                    </div>
-                    <div class="field">
-                        <div class="field-inner">
-                            <div class="bold-header">Structure Type</div>
-                            <select id="Sub_type" name="structureFilter" class="selection" multiple="multiple">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="field-inner">
-                            <div class="bold-header">Construction Date</div>
-                            <select id='Alt_Constr' name="yearFilter" class="selection" multiple="multiple">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="field-inner">
-                            <div class="bold-header">Reign</div>
-                            <select id='Constr_Reign' name="reignFilter" class="selection" multiple="multiple">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="field-inner center-content">
-                            <button id="clearButton" class="clear-button button" type="button">Clear All</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id='map-legend' class="map-overlay bottom" style="display: none;">
-                <div class="map-overlay-inner">
-                    <div class="center-header">
-                        <h3>Legend</h3>
-                    </div>
-                    <div class="field">
-                        <div class="field-inner center-content">
-                            <div id="legend"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div id='map-overlay' class="map-overlay bottom" style="display: none;">
-                <div class="map-overlay-inner">
-                    <div class="time-line-header">
-                        <h3>Timeline</h3>
-                    </div>
-                    <div class="time-line-label">
-                        <label id='year'></label>
-                    </div>
-                    <input id="timeSlider" name="time-slider" type="range" min="0" max="11" step="1" value='11' class="slider">
-                </div>
-            </div> -->
-            
         </div>
-    </div>
-    <div id="building-detail" class="map-overlay" style="display: none;">
-        <div id="building-detail-inner" class="map-overlay-inner">
+        <div id="building-detail" class="map-overlay" style="display: none;">
+            <div id="building-detail-inner" class="map-overlay-inner">
+            </div>
         </div>
-    </div>
+</div>
     <!-- End map-container -->
 </div>
 <!--End copying here-->

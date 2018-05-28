@@ -14,7 +14,7 @@ var LegendController = {
 		},
 	},
 	buildLegendDisplay: function(){
-		$.each(legendData, function(key, value){
+		$.each(LegendController.legendData, function(key, value){
 			var content = $("<p>"+value.name+"</p>");
 			$("#legend").append(content);
 		});

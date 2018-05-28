@@ -1,6 +1,7 @@
 var ModalBoxController = {
 	onBuildingSelected: function(layerIDlist, map){
 		map.on('click', function (e) {
+			console.log(e);
     		var features = map.queryRenderedFeatures(e.point);
     		if($("#building-detail-inner").children().length != 0){
     			$("#building-detail").css("display","none");

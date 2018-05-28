@@ -25,12 +25,12 @@
     position: absolute;
     padding: 10px;
     z-index: 1;
+    overflow-y: auto;
+    height: calc(100vh-40px);
 }
 
 .bottom {
-    width: 100%;
     bottom: 0;
-    left: 0;   
 }
 
 .top {
@@ -52,16 +52,12 @@
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
     border-radius: 5px;
-    /*padding: 20px;*/
-    text-align: center;
-    margin-bottom: 22px;
+    padding: 10px;
 }
 
 .map-overlay h3 {
-    /*line-height: 5px;*/
     display: block;
     margin: 0 0 00px;
-    /*padding-top: 10px;*/
     padding-bottom: 5px;
 }
 
@@ -88,41 +84,11 @@
     padding-bottom: 10px;
 }
 .field-inner .selection {
-    width: 100%;
+    /*width: 100%;*/
     height: 0px;
 }
 .bold-header {
     font-weight: bold;    
-}
-
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
-    border-radius: 5px;   
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
-
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%; 
-    background: #4CAF50;
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #4CAF50;
-    cursor: pointer;
 }
 
 #menu {
@@ -171,11 +137,8 @@
     width: 200px;
 }
 
-
-
 .detail-header {
-    border-bottom: 1px dotted black;
-    padding-bottom:8px;
+    border-bottom: 1px solid black;
 }
 
 .center-content {
@@ -214,38 +177,4 @@
     color: #fff;
     background-color: #337ab7;
     border-color: #285e8e; 
-}
-
-.center-header h3 {
-    font-size: 14pt;
-    font-weight: 900;
-    padding-top: 10px;
-}
-
-
-.center-header.detail-header h3 {
-    text-transform: capitalize;
-    text-align: left;
-    font-size: 14pt;
-    margin-bottom: 8px;
-    padding-bottom: 5px;
-}
-
-#building-detail-inner p {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-#building-detail-inner .bold-header {
-    padding-top: 10px;
-}
-
-#map-filter {
-    /*min-width: 260px;*/
-}
-
-
-#page-container {
-    padding-top: 0px
-    
 }

@@ -127,16 +127,29 @@ var MapboxController = {
 	},
 	resizeViewPort: function(map){
 		// resize map on viewport height changes
+		var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+		if(isNaN(viewportHeight)){
+			viewportHeight = $(window).height();
+		}
+		$(".map-container").css('height',viewportHeight);
+		map.resize();
     	$(window).on('resize', function(){
-    		try{
-				var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
-    		}
-			catch (e){
-				var viewportHeight = $(window).height();
-			}  
+			var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+			if(isNaN(viewportHeight)){
+				viewportHeight = $(window).height();
+			}
 			$(".map-container").css('height',viewportHeight);
     		map.resize();
 		});
+	},
+
+	resizeLayerSideBar: function(map){
+		var mapHeight = parseFloat($("#map").css("height"));
+		var layerBarHeight = parseFloat($("#map-layer").css("height"));
+		if(layerBarHeight > mapHeight - 10){
+			$("#map-layer").css("height",mapHeight - 10);
+			$("#menu").css("overflow-y", "auto");
+		}
 	},
 	
 };
