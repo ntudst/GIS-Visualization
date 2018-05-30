@@ -1,3 +1,63 @@
+/* Styling for Structure Details*/
+
+#struct-record {
+    padding: 0;
+    padding-top: 0px !important;
+}
+
+#other-info-left {
+    padding: 0;
+}
+
+#details-label {
+    font-weight: bold;
+}
+
+#details-section-heading {
+    padding-top: 20px;
+}
+
+/* Styling for Forms */
+#form-section-header-first, #form-section-header {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11pt;
+    border-top: 1px dotted #333;
+    padding-top: 20px;
+}
+
+#frm_field_125_container, #frm_field_126_container, #frm_field_127_container{
+    padding-top: 40px;
+}
+
+#form-subheadings {
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.frm_submit {
+    text-align: right;
+    margin-right: -20px;
+}
+
+input[type="submit"] {
+    background: white !important;
+    border: 2px Solid #333 !important;
+    padding: 7.5px !important;
+    margin-top: 7px !important;
+    font-family: 'Source Sans Pro', Helvetica, Arial, Lucida,! sans-serif important;
+    text-transform: uppercase !important;
+    color: #333 !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    border-radius: 0 !important;
+    font-size: 15px !important;
+}
+/* end of form styling*/
+
+/*Michael Code*/
 .map-container{
   width: 100%;
   height: 500px;
@@ -23,38 +83,34 @@
 .map-overlay {
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
     position: absolute;
-    padding: 10px;
     z-index: 1;
 }
 
 .bottom {
-    width: 100%;
     bottom: 0;
-    left: 0;   
 }
 
 .top {
     top: 0;
-    width: 13%;
 }
 
 .left {
     left: 0;
-    width: 239px;
+    /*min-width: 210px;*/
 }
 
 .right {
     right: 0;
-    width: 13%;
+    /*min-width: 13%;*/
 }
 
 .map-overlay .map-overlay-inner {
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow:0 1px 2px rgba(0, 0, 0, 0.20);
     border-radius: 5px;
-    /*padding: 20px;*/
-    text-align: center;
-    margin-bottom: 22px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 40px;
 }
 
 .map-overlay h3 {
@@ -92,7 +148,8 @@
     height: 0px;
 }
 .bold-header {
-    font-weight: bold;    
+    font-weight: bold;
+    padding-left: 5px;    
 }
 
 .slider {
@@ -126,15 +183,15 @@
 }
 
 #menu {
-        background: #fff;
-        position: relative;
-        z-index: 1;
-        top: 10px;
-        width: 100%;
-        margin-bottom: 15px;
-        border-radius: 3px;
-        border: 1px solid rgba(0,0,0,0.4);
-        font-family: 'Open Sans', sans-serif;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    top: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.4);
+    font-family: 'Open Sans', sans-serif;
 }
 
 #menu a {
@@ -175,7 +232,7 @@
 
 .detail-header {
     border-bottom: 1px dotted black;
-    padding-bottom:8px;
+    padding:8px;
 }
 
 .center-content {
@@ -234,18 +291,53 @@
 #building-detail-inner p {
     margin-bottom: 0;
     padding-bottom: 0;
+    padding-left: 10px;
+}
+
+#building-detail-inner a {
+    padding: 5px;
+}
+
+#building-detail-inner .center-content {
+    padding: 10px;
 }
 
 #building-detail-inner .bold-header {
     padding-top: 10px;
 }
 
-#map-filter {
-    /*min-width: 260px;*/
-}
-
 
 #page-container {
     padding-top: 0px
-    
+}
+
+.legend-icon {
+    float: center;
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.legend-content {
+    margin-left: 0px !important;
+    min-width: 200px;
+}
+
+.hidden-btn {
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 900px){
+    .hide-on-mobile {
+        display: none;
+    }
 }

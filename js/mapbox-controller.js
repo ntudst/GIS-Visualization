@@ -37,9 +37,9 @@ var MapboxController = {
 		    			for (var k = 0; k<dataObject["source"]["data"].features.length;k++){
 		    				if(layerName == "buildings" || layerName == "walls"){
 			    				// Build Year List;
-			    				var constructionYear = String(dataObject["source"]["data"].features[k].properties.Alt_Constr);
+			    				var constructionYear = String(dataObject["source"]["data"].features[k].properties.constr_date);
 			    				if(constructionYear == undefined){
-				    				constructionYear = String(dataObject["source"]["data"].features[k].properties.YR_CNSTR_C);
+				    				constructionYear = String(dataObject["source"]["data"].features[k].properties.constr_date_cbs);
 			    				}
 				    			if(constructionYear != undefined){
 				    				if(yearList.indexOf(constructionYear) == -1){
@@ -48,7 +48,7 @@ var MapboxController = {
 				    				}
 				    			}
 			    				// Build Structure Type List
-			    				var subType = String(dataObject["source"]["data"].features[k].properties.Sub_type);
+			    				var subType = String(dataObject["source"]["data"].features[k].properties.typology_sub_type);
 			    				if(subType != undefined){
 			    					if(structureList.indexOf(subType) == -1){
 			    						structureList.push(subType);
@@ -63,7 +63,7 @@ var MapboxController = {
 			    					}
 			    				}
 			    				// Build Reign List
-			    				var reign = String(dataObject["source"]["data"].features[k].properties.Constr_Reign);
+			    				var reign = String(dataObject["source"]["data"].features[k].properties.constr_reign);
 			    				if(reign != undefined){
 			    					if(reignList.indexOf(reign) == -1){
 			    						reignList.push(reign);
@@ -123,33 +123,46 @@ var MapboxController = {
 	    	FilterController.setClearAllEvent(filterSelectionList);
 	    	LegendController.buildLegendDisplay();
 	    	MapboxController.resizeViewPort(map);
+	    	LayerController.resizeLayerSideBar();
+	    	FilterController.resizeFilter();
+	    	LegendController.resizeLegendDisplay();
+	    	MapboxController.toggleMapFunction();
 	    });
 	},
 	resizeViewPort: function(map){
 		// resize map on viewport height changes
-		var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+		var viewportHeight = parseFloat(window.innerHeight) - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
 		if(isNaN(viewportHeight)){
-			viewportHeight = $(window).height();
+			viewportHeight = window.innerHeight;
 		}
 		$(".map-container").css('height',viewportHeight);
 		map.resize();
     	$(window).on('resize', function(){
-			var viewportHeight = $(window).height() - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
+			var viewportHeight = window.innerHeight - parseFloat($("#main-footer").css('height')) - parseFloat($("#main-header").css('height')) - parseFloat($("#wpadminbar").css('height'));
 			if(isNaN(viewportHeight)){
-				viewportHeight = $(window).height();
+				viewportHeight = window.innerHeight;
 			}
 			$(".map-container").css('height',viewportHeight);
     		map.resize();
+    		$("#map-layer").trigger("change");
+			$("#map-filter").trigger("change");
+			$("#map-legend").trigger("change");
 		});
 	},
 
-	resizeLayerSideBar: function(map){
-		var mapHeight = parseFloat($("#map").css("height"));
-		var layerBarHeight = parseFloat($("#map-layer").css("height"));
-		if(layerBarHeight > mapHeight - 10){
-			$("#map-layer").css("height",mapHeight - 10);
-			$("#menu").css("overflow-y", "auto");
-		}
+	toggleMapFunction: function(){
+		$("#layer-header").on("click", function(){
+			$("#layer-content").toggle();
+			$("#map-layer").trigger("change");
+		});
+		$("#filter-header").on("click", function(){
+			$("#filter-content").toggle();
+			$("#map-filter").trigger("change");
+		});
+		$("#legend-header").on("click", function(){
+			$("#legend-content").toggle();
+			$("#map-legend").trigger("change");
+		});
 	},
-	
+
 };

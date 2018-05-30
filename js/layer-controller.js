@@ -33,7 +33,6 @@ var LayerController = {
 				var filterSelectionList = FilterController.getFilterSelectionList();
 				$.each(filterSelectionList, function(key,filterID){
 					$("#"+filterID).trigger("change");
-					console.log(1);
 				});
 			}
 		}
@@ -47,5 +46,29 @@ var LayerController = {
 		else{
 			map.setLayoutProperty(selectedLayer, 'visibility', 'visible');
 		}
+	},
+
+	resizeLayerSideBar: function(map){
+		var mapHeight = parseFloat($("#map").css("height"));
+		var layerBarHeight = parseFloat($("#map-layer").css("height"));
+		if(layerBarHeight > mapHeight - 13){
+			$("#menu").css("overflow-y", "auto");
+			$("#menu").css("max-height", mapHeight - 100);
+		}
+		$("#map-layer").on('change', function(){
+			console.log('resize');
+			var mapHeight = parseFloat($("#map").css("height"));
+			var numberOfLayer = parseFloat($("#menu a").length);
+			var layerHeaderHeight = parseFloat($("#layer-header").css("height"));
+			var layerBarHeight = parseFloat($("#menu a").css("height"))*numberOfLayer + 1;
+			var maxLayerBarHeight = layerBarHeight + layerHeaderHeight;
+			console.log(maxLayerBarHeight);
+			if(maxLayerBarHeight > mapHeight - 13){
+				layerBarHeight = mapHeight - 100;
+				console.log(mapHeight);
+			}
+			$("#menu").css("overflow-y", "auto");
+			$("#menu").css("height", layerBarHeight);
+		});
 	},
 };

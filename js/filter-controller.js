@@ -14,7 +14,7 @@ var FilterController = {
 		displayList = displayList.sort();
 		for(var i=0; i<dataList.length; i++){
 			var option = $("<option></option>").val(dataList[i]).text(displayList[i]);
-			if($("option[value='"+option.val()+"']").val() == undefined){
+			if($("#"+selectID+" option[value='"+option.val()+"']").val() == undefined){
 				$("#"+selectID).append(option);
 			}
 		}
@@ -28,8 +28,6 @@ var FilterController = {
 		$.each(filterSelectionList, function(filterName, filterID){
 			console.log("count");
 			$("#"+filterID).on("change",function(){
-				console.log(filterID);
-				console.log(filterSelectionList);
 				// Check if the layer for building or wall is selected
 				layerTobeFilterList.forEach(function(layerName){
 					var activeLayer = "a[name='" + layerName + "']";
@@ -73,5 +71,27 @@ var FilterController = {
 			structureList.push(name);
 		});
 		return structureList;
+	},
+
+	resizeFilter: function(){
+		var mapHeight = parseFloat($("#map").css("height"));
+		var filterHeight = parseFloat($("#map-filter").css("height"));
+		var legendHeight = parseFloat($("#map-legend").css("height"));
+		if(filterHeight > mapHeight - legendHeight){
+			$("#filter-content").css("overflow-y", "auto");
+			$("#filter-content").css("max-height", mapHeight - 150);
+		}
+		$("#map-filter").on('change', function(){
+			var mapHeight = parseFloat($("#map").css("height"));
+			var filterHeaderHeight = parseFloat($("#filter-header").css("height"));
+			var filterHeight = parseFloat($("#filter-content").css("max-height"));
+			var maxLayerBarHeight = filterHeight + filterHeaderHeight;
+			var legendHeight = parseFloat($("#map-legend").css("height"));
+			if(maxLayerBarHeight > mapHeight - legendHeight){
+				filterHeight = mapHeight - 150;
+			}
+			$("#filter-content").css("overflow-y", "auto");
+			$("#filter-content").css("height", filterHeight);
+		});
 	},
 };

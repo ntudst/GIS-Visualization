@@ -80,30 +80,30 @@ var ModelManager = {
 		// yearRegex4 test for year in format '1775, 1760'
 		var yearRegex4 = new RegExp("[0-9]*[0-9], [0-9]*[0-9]");
 		for(var i=0; i < geoJsonData.features.length; i++){
-			if(geoJsonData.features[i].properties.YR_CNSTR_C != undefined && geoJsonData.features[i].properties.YR_CNSTR_C != "NA"){
-				if(yearRegex1.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
-					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
-					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[0-9]*[0-9]-"),"");
+			if(geoJsonData.features[i].properties.constr_date != undefined && geoJsonData.features[i].properties.constr_date != "NA"){
+				if(yearRegex1.test(geoJsonData.features[i].properties.constr_date)){
+					var string = geoJsonData.features[i].properties.constr_date;
+					geoJsonData.features[i].properties.constr_date = string.replace(new RegExp("[0-9]*[0-9]-"),"");
 				}
-				if(yearRegex2.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
-					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
-					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[b|B]efore "),"");
+				if(yearRegex2.test(geoJsonData.features[i].properties.constr_date)){
+					var string = geoJsonData.features[i].properties.constr_date;
+					geoJsonData.features[i].properties.constr_date = string.replace(new RegExp("[b|B]efore "),"");
 				}
-				if(yearRegex3.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
-					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
-					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp("[?]"),"");
+				if(yearRegex3.test(geoJsonData.features[i].properties.constr_date)){
+					var string = geoJsonData.features[i].properties.constr_date;
+					geoJsonData.features[i].properties.constr_date = string.replace(new RegExp("[?]"),"");
 				}
-				if(yearRegex4.test(geoJsonData.features[i].properties.YR_CNSTR_C)){
-					var string = geoJsonData.features[i].properties.YR_CNSTR_C;
-					geoJsonData.features[i].properties.YR_CNSTR_C = string.replace(new RegExp(", [0-9]*[0-9]"),"");
+				if(yearRegex4.test(geoJsonData.features[i].properties.constr_date)){
+					var string = geoJsonData.features[i].properties.constr_date;
+					geoJsonData.features[i].properties.constr_date = string.replace(new RegExp(", [0-9]*[0-9]"),"");
 				}
 			}
 			else{
 				if(layerName == "contours" || layerName == "lakes" || layerName == "islands" || layerName == "streams"){
-					geoJsonData.features[i].properties.YR_CNSTR_C = String(minYear - 1);
+					geoJsonData.features[i].properties.constr_date = String(minYear - 1);
 				}
 				else{
-					geoJsonData.features[i].properties.YR_CNSTR_C = minYear;
+					geoJsonData.features[i].properties.constr_date = minYear;
 				}
 			}
 		}

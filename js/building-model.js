@@ -44,7 +44,7 @@ var BuildingModel = {
 						},
 						color: "#FF8C00"
 					},
-					Others: {
+					Uncertain: {
 						data: {
 							crs: result.crs,
 							features: [],
@@ -54,14 +54,14 @@ var BuildingModel = {
 					}
 				}
 				for(var i=0; i<result.features.length; i++){
-					if(result.features[i].properties.Constr_Reign == "Kangxi"){
+					if(result.features[i].properties.constr_reign == "Kangxi"){
 						data.Kangxi.data.features.push(result.features[i]);
 					}
-					else if(result.features[i].properties.Constr_Reign == "Qianlong"){
+					else if(result.features[i].properties.constr_reign == "Qianlong"){
 						data.Qianlong.data.features.push(result.features[i]);
 					}
 					else{
-						data.Others.data.features.push(result.features[i]);
+						data.Uncertain.data.features.push(result.features[i]);
 					}
 				}
 
