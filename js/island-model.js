@@ -1,7 +1,7 @@
 var IslandModel = {
 	id: "islands",
 	label: "Islands",
-	url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/Islands.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/Islands.geojson",
 	data: [],
 	color: "#FFFFFF",
 	opacity: 0.6,

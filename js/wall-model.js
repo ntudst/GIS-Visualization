@@ -1,7 +1,7 @@
 var WallModel = {
 	id: "walls",
 	label: "Walls",
-	url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/walls.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/walls.geojson",
 	data: [],
 	color: "#7A7A7A",
 	linewidth: 1.5,

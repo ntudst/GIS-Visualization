@@ -1,7 +1,7 @@
 var RockerieModel = {
 	id: "rockeries",
 	label: "Rockeries",
-	url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/rockeries.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/rockeries.geojson",
 	data: [],
 	opacity: 0.6,
 	type: "symbol",

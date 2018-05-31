@@ -1,7 +1,7 @@
 var ScenicareaModel = {
 	id: "scenicareas",
 	label: "Scenic Areas",
-	url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/scenic-area.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/scenic-area.geojson",
 	data: [],
 	opacity: 0.6,
 	type: "symbol",

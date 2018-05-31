@@ -1,7 +1,7 @@
 var StreamModel = {
 	id: "streams",
 	label: "Streams",
-	url: "https://raw.githubusercontent.com/michaelhoanglong/GIS-Visualization/master/geojson/streams.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/streams.geojson",
 	data: [],
 	color: "#41b6c4",
 	linewidth: 3,
