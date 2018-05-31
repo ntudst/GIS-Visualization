@@ -1,7 +1,7 @@
 var PerimeterwallModel = {
 	id: "perimeterwalls",
 	label: "Perimeter Walls",
-	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/geojson/perimeter-wall.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.3/geojson/perimeter-wall.geojson",
 	data: [],
 	color: "#fed976",
 	linewidth: 3,

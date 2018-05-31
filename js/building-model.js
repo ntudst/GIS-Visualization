@@ -1,7 +1,7 @@
 var BuildingModel = {
 	id: "buildings",
 	label: "Buildings",
-	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/geojson/building.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.3/geojson/building.geojson",
 	data: [],
 	color: "#707070",
 	opacity: 1.0,

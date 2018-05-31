@@ -1,7 +1,7 @@
 var WaterfeatureModel = {
 	id: "waterfeatures",
 	label: "Water Features",
-	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/geojson/water-features.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.3/geojson/water-features.geojson",
 	data: [],
 	opacity: 0.6,
 	type: "symbol",
