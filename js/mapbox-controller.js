@@ -9,7 +9,7 @@ var MapboxController = {
 		return map;
 	},
 	loadMap: function(data){
-		mapboxgl.accessToken = 'pk.eyJ1IjoibWljaGFlbC1sZTYxMSIsImEiOiJjamRmZTNmajMwNnd5MzJtZnN2YzVoMHppIn0.18MD1NJSx8CW2IvOb9VKIw';
+		mapboxgl.accessToken = 'pk.eyJ1IjoibnR1ZHN0IiwiYSI6ImNqaHU1ZHo0ZzA2cXkzcnBpeWJvYzc0NGoifQ.JAuM_DaDAERDtX1tRRZs4w';
 		var map = new mapboxgl.Map({
 			container: 'map',
 			style: 'mapbox://styles/mapbox/basic-v9',
