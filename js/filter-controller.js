@@ -77,10 +77,8 @@ var FilterController = {
 		var mapHeight = parseFloat($("#map").css("height"));
 		var filterHeight = parseFloat($("#map-filter").css("height"));
 		var legendHeight = parseFloat($("#map-legend").css("height"));
-		if(filterHeight > mapHeight - legendHeight){
-			$("#filter-content").css("overflow-y", "auto");
-			$("#filter-content").css("max-height", mapHeight - legendHeight - 55);
-		}
+		$("#filter-content").css("overflow-y", "auto");
+		$("#filter-content").css("max-height", mapHeight - legendHeight - 195);
 		$("#map-filter").on('change', function(){
 			var mapHeight = parseFloat($("#map").css("height"));
 			var filterHeaderHeight = parseFloat($("#filter-header").css("height"));

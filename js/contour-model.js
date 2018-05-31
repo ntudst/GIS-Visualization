@@ -1,7 +1,7 @@
 var ContourModel = {
 	id: "contours",
 	label: "Contours",
-	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/alos-ctr10-smooth.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/geojson/alos-ctr10-smooth.geojson",
 	data: [],
 	color: "#a1dab4",
 	linewidth: 2,

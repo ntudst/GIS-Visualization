@@ -1,7 +1,7 @@
 var LakeModel = {
 	id: "lakes",
 	label: "Lakes",
-	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/geojson/lakes.geojson",
+	url: "https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/geojson/lakes.geojson",
 	data: [],
 	color: "#92C5D8",
 	opacity: 0.6,

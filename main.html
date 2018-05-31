@@ -1,6 +1,7 @@
 <div class="main-body">
     <div class="input-references" style="display: none;">
 
+        <!-- jquery file for development -->
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -21,47 +22,47 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.0.2/sumoselect.min.css">
 
         <!-- CSS file for development -->
-        <!-- <link href="css/custom.css" rel='stylesheet' /> -->
+        <link href="css/custom.css" rel='stylesheet' />
 
         <!-- sumo select js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.0.2/jquery.sumoselect.min.js"></script>
 
         <!-- models -->
         <!-- Model Manager -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/model-manager.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/model-manager.js"></script>
         <!-- Bulding Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/building-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/building-model.js"></script>
         <!-- Contour Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/contour-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/contour-model.js"></script>
         <!-- Island Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/island-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/island-model.js"></script>
         <!-- Lake Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/lake-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/lake-model.js"></script>
         <!-- Perimeter Wall Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/perimeterwall-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/perimeterwall-model.js"></script>
         <!-- Rockerie Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/rockerie-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/rockerie-model.js"></script>
         <!-- Scenic Area Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/scenicarea-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/scenicarea-model.js"></script>
         <!-- Stream Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/stream-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/stream-model.js"></script>
         <!-- Wall Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/wall-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/wall-model.js"></script>
         <!-- Water Feature Model -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/waterfeature-model.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/waterfeature-model.js"></script>
 
         <!-- Layer Controller -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/layer-controller.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/layer-controller.js"></script>
         <!-- Filter Controller -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/filter-controller.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/filter-controller.js"></script>
         <!-- Legend Controller -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/legend-controller.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/legend-controller.js"></script>
         <!-- Modal Box Controller -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/modalbox-controller.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/modalbox-controller.js"></script>
         <!-- mapbox-controller.js -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/mapbox-controller.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/mapbox-controller.js"></script>
         <!-- main.js -->
-        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.1/js/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ntudst/GIS-Visualization@1.2/js/main.js"></script>
     </div>
     
     <!--Copy this part to wordpress-->
@@ -107,7 +108,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <div class="field-inner center-content">
+                            <div id="clearButtonField" class="field-inner center-content">
                                 <button id="clearButton" class="btn btn-primary" type="button">Clear All</button>
                             </div>
                         </div>
@@ -119,10 +120,34 @@
                     <div id="legend-header" class="hidden-btn btn center-header">
                         <h3>Legend</h3>
                     </div>
-                    <div id="legend-content" class="hide-on-mobile">
+                    <div id="legend-content" class="hide-on-mobile row">
                         <div class="field">
-                            <div class="field-inner center-content">
-                                <div id="legend">
+                            <div class="field-inner">
+                                <div class='col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+                                    <div class='legend-icon' style='background: #8A2BE2;'></div>
+                                </div>
+                                <div class='legend-text col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+                                    <p>Kangxi Period</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner">
+                                <div class='col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+                                    <div class='legend-icon' style='background: #FF8C00;'></div>
+                                </div>
+                                <div class='legend-text col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+                                    <p>Qianlong Period</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field-inner">        
+                                <div class='col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+                                    <div class='legend-icon' style='background: #707070;'></div>
+                                </div>
+                                <div class='legend-text col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+                                    <p>Uncertain</p>
                                 </div>
                             </div>
                         </div>

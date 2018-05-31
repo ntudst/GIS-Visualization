@@ -121,11 +121,9 @@ var MapboxController = {
 	    	};
 	    	FilterController.onFilterSelected(filterSelectionList, layerTobeFilterList, map);
 	    	FilterController.setClearAllEvent(filterSelectionList);
-	    	LegendController.buildLegendDisplay();
 	    	MapboxController.resizeViewPort(map);
 	    	LayerController.resizeLayerSideBar();
 	    	FilterController.resizeFilter();
-	    	LegendController.resizeLegendDisplay();
 	    	MapboxController.toggleMapFunction();
 	    });
 	},
@@ -160,7 +158,6 @@ var MapboxController = {
 		});
 		$("#legend-header").on("click", function(){
 			$("#legend-content").toggle();
-			$("#map-legend").trigger("change");
 		});
 	},
 
