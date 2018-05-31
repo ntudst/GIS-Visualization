@@ -146,7 +146,6 @@ var MapboxController = {
     		map.resize();
     		$("#map-layer").trigger("change");
 			$("#map-filter").trigger("change");
-			$("#map-legend").trigger("change");
 		});
 	},
 

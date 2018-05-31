@@ -1,5 +1,9 @@
 /* Styling for Structure Details*/
 
+#details-map {
+    padding-top: 30px;
+}
+
 #struct-record {
     padding: 0;
     padding-top: 0px !important;
@@ -15,6 +19,12 @@
 
 #details-section-heading {
     padding-top: 20px;
+}
+
+#details-divider {
+    border-top: 1px dotted #666;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 /* Styling for Forms */
@@ -330,13 +340,13 @@ input[type="submit"] {
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-height: 600px){
     .hide-on-mobile {
         display: none;
     }
 }
 
-@media screen and (max-height: 900px){
+@media screen and (max-width: 768px){
     .hide-on-mobile {
         display: none;
     }
